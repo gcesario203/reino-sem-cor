@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Reino sem Cor | Projeto Interdisciplinar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- MENU FIXO -->
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">O Reino sem Cor</h1>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="documentacao.html">Documentação</a></li>
+                <li><a href="#jogo" class="btn-nav">Jogar</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Restaure as Cores do Reino</h2>
+                <p class="hero-subtitle">Um jogo 2D de fantasia onde o mundo renasce em cores conforme você avança.</p>
+                <div class="hero-buttons">
+                    <a href="#jogo" class="btn btn-primary">Jogar Agora</a>
+                    <a href="documentacao.html" class="btn btn-secondary">Documentação</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/500x400/1a1a1a/e63946?text=O+Reino+Sem+Cor" alt="Imagem do jogo O Reino sem Cor">
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE INFORMAÇÕES -->
+    <section class="info-section">
+        <div class="container">
+            <h3 class="section-title">Sobre o Projeto</h3>
+            <p class="section-description">
+                Este projeto interdisciplinar combina as disciplinas de <em>Tecnologia da Informação</em> e <em>Princípios de Jogos Digitais</em>,
+                promovendo o desenvolvimento de um jogo digital autoral e o uso de ferramentas no-code.
+            </p>
+
+            <!-- CARDS REDONDOS DOS MEMBROS -->
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/150/2a9d8f/ffffff?text=GC" alt="Gabriel Cesario">
+                    <h4>Gabriel Cesario</h4>
+                    <p class="ra">RA: 0040962523025</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/150/457b9d/ffffff?text=GS" alt="Gustavo Santos">
+                    <h4>Gustavo Santos</h4>
+                    <p class="ra">RA: 000000</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/150/e63946/ffffff?text=LHS" alt="Luiz Henrique Saia">
+                    <h4>Luiz Henrique Saia</h4>
+                    <p class="ra">RA: 0040962523037</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/150/2a9d8f/ffffff?text=VHB" alt="Vinicius Heleno Bassani">
+                    <h4>Vinícius Heleno Bassani</h4>
+                    <p class="ra">RA: 0040962523007</p>
+                </div>
+            </div>
+
+            <div class="course-info">
+                <p><strong>Curso:</strong> Jogos digitais 1º semestre</p>
+                <p><strong>Ano:</strong> 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DO JOGO -->
+    <section id="jogo" class="game-section">
+        <div class="container">
+            <h3 class="section-title">Jogue Agora</h3>
+            <p class="section-description">Experimente a fase demonstrativa diretamente no navegador.</p>
+            <div class="game-container">
+                <div class="game-placeholder">
+                    <img src="https://via.placeholder.com/800x450/0d0d0d/e63946?text=Jogo+Carregando..." alt="Área do jogo">
+                    <p>O jogo será carregado aqui</p>
+                    <!-- Futuramente: <iframe src="assets/game/index.html"></iframe> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Projeto Interdisciplinar - IJD001 & ITI010</p>
+            <p class="footer-subtitle">Profº Dr. João Emmanuel D. Alkmin Neves & Profº Eduardo Antonio Vicentini</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
