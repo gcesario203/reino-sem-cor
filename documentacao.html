@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação | O Reino sem Cor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">O Reino sem Cor</h1>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#documentacao">Documentação</a></li>
+                <li><a href="index.html#jogo" class="btn-nav">Jogar</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- CABEÇALHO -->
+    <section id="documentacao" class="doc-header">
+        <div class="container">
+            <h2>Documentação do Jogo</h2>
+            <div class="doc-meta">
+                <div class="doc-meta-item">
+                    <strong>Nome:</strong>
+                    <p>O Reino sem Cor</p>
+                </div>
+                <div class="doc-meta-item">
+                    <strong>Gênero:</strong>
+                    <p>Sobrevivência / Fantasia Medieval</p>
+                </div>
+                <div class="doc-meta-item">
+                    <strong>Ferramentas:</strong>
+                    <p>GDevelop, Wix e Canva</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem; color: var(--cor-cinza); font-size: 1rem;">
+                Quer se aprofundar nos personagens, cenários, mecânicas e na concepção do jogo?
+                <a href="https://github.com/gcesario203/reino-sem-cor/blob/main/documentacao.pdf"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   style="color: var(--cor-primaria); font-weight: 600; text-decoration: underline;">
+                    Clique aqui para acessar a documentação completa em PDF.
+                </a>
+            </p>
+        </div>
+    </section>
+
+    <!-- CARROSSEL DE PERSONAGENS -->
+    <section class="gallery-section bg-dark">
+        <div class="container">
+            <h3 class="section-title">Personagens</h3>
+            <div class="carousel-container personagens">
+                <button class="carousel-btn prev">❮</button>
+                <div class="carousel-wrapper">
+                    <div class="carousel-track">
+                        <div class="carousel-item">
+                            <img src="./assets/personagens/heroi_x.png" alt="Herói X">
+                            <div class="carousel-text">
+                                <h4>Herói X</h4>
+                                <p>Portador do Pincel da Aura e do Escudo-Godê, o protagonista que devolve as cores ao
+                                    reino.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/personagens/rei_x.png" alt="Rei X">
+                            <div class="carousel-text">
+                                <h4>Rei X</h4>
+                                <p>Monarca sábio que confia ao herói a missão de restaurar o Reino Esmaecido.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/personagens/mago_x.png" alt="Mago X">
+                            <div class="carousel-text">
+                                <h4>Mago X</h4>
+                                <p>Conselheiro corrompido que roubou as cores do mundo e distorce a realidade.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/bosses/galinacio.png" alt="Galinacio">
+                            <div class="carousel-text">
+                                <h4>Galinacio (Boss Vermelho)</h4>
+                                <p>Frango mágico caótico do Salão Rubi — representa a fúria e o caos.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/bosses/dragao_pedra_esmeralda.png" alt="Dragão de Pedra Esmeralda">
+                            <div class="carousel-text">
+                                <h4>Dragão de Pedra Esmeralda (Boss Verde)</h4>
+                                <p>Guardião dos Jardins Esmeralda, símbolo da vida e regeneração.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/bosses/agua_viva.png" alt="Água-Viva">
+                            <div class="carousel-text">
+                                <h4>Água-Viva (Boss Azul)</h4>
+                                <p>Guardião da Biblioteca Turquesa — representa a reflexão e paciência.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn next">❯</button>
+            </div>
+            <div class="carousel-indicators personagens"></div>
+        </div>
+    </section>
+
+    <!-- INIMIGOS -->
+    <section class="gallery-section">
+        <div class="container">
+            <h3 class="section-title">Inimigos</h3>
+            <div class="gallery-grid">
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/inimigos/aspirante_ratalheiro.png" alt="Aspirante Ratalheiro">
+                    </div>
+                    <h4>Aspirante Ratalheiro</h4>
+                    <p>Rato cavaleiro com espada. Movimento desajeitado mas persistente no combate corpo a corpo.</p>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/inimigos/aspirante_heroi.png" alt="Aspirante Herói">
+                    </div>
+                    <h4>Aspirante Herói</h4>
+                    <p>Sapo cavaleiro aspirante que tenta imitar os movimentos heroicos do protagonista.</p>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/inimigos/aspirante_sabio.png" alt="Aspirante Sábio">
+                    </div>
+                    <h4>Aspirante Sábio</h4>
+                    <p>Mascote mágico que conjura bolas de fogo à distância. Ataque de longo alcance.</p>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/inimigos/sapo_pugilista.png" alt="Sapo Pugilista">
+                    </div>
+                    <h4>Sapo Pugilista</h4>
+                    <p>Sapo boxeador com socos rápidos e postura de guarda. Combate ágil de curta distância.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CENÁRIOS -->
+    <section class="gallery-section bg-dark">
+        <div class="container">
+            <h3 class="section-title">Cenários</h3>
+            <div class="gallery-grid">
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/cenarios/sala_quadros.png" alt="Sala dos Quadros">
+                    </div>
+                    <h4>Sala dos Quadros</h4>
+                    <p>Hub central com três quadros mágicos que levam às fases cromáticas.</p>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/cenarios/biblioteca_turquesa.png" alt="Biblioteca Turquesa">
+                    </div>
+                    <h4>Biblioteca Turquesa</h4>
+                    <p>Torre vertical de espelhos e livros azuis, onde o tempo parece não mover-se.</p>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/cenarios/salao_rubi.png" alt="Salão Rubi">
+                    </div>
+                    <h4>Salão Rubi</h4>
+                    <p>Banquete em ruínas iluminado pelas chamas vermelhas da fúria. Lar do Galinacio.</p>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/cenarios/jardins_esmeralda.png" alt="Jardins Esmeralda">
+                    </div>
+                    <h4>Jardins Esmeralda</h4>
+                    <p>Área de serenidade verde coberta por vegetação vibrante e estátuas animadas pelo dragão.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MECÂNICAS PRINCIPAIS -->
+    <section class="gallery-section">
+        <div class="container">
+            <h3 class="section-title">Mecânicas Principais</h3>
+            <div class="gallery-grid">
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="https://via.placeholder.com/600x400/0d0d0d/e63946?text=HP+%26+MP" alt="HP e MP">
+                    </div>
+                    <h4>Pontos de Vida (HP)</h4>
+                    <p>HP do Herói X é exibido entre 0% e 100%. Ao chegar a zero, o herói é derrotado e retorna ao Salão do Trono, podendo tentar novamente a fase ou escolher outro quadro.</p>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="https://via.placeholder.com/600x400/0d0d0d/457b9d?text=MP" alt="MP">
+                    </div>
+                    <h4>Pontos de Magia (MP)</h4>
+                    <p>Usados para o Pincel da Aura e magias coloridas. A barra de MP regenera lentamente fora de combate, incentivando uso estratégico das habilidades especiais.</p>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="https://via.placeholder.com/600x400/0d0d0d/f4a261?text=Stamina" alt="Stamina">
+                    </div>
+                    <h4>Sistema de Stamina</h4>
+                    <p>Consumida ao correr, pular, atacar e bloquear com o escudo-godê. Com stamina baixa, o herói ataca mais lentamente, defende pior e tem mobilidade reduzida, reforçando o aspecto de sobrevivência.</p>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="https://via.placeholder.com/600x400/0d0d0d/2a9d8f?text=Escudo-God%C3%AA" alt="Escudo-Godê">
+                    </div>
+                    <h4>Escudo-Godê</h4>
+                    <p>Escudo em forma de godê com três compartimentos (vermelho, verde e azul). Conforme as cores são restauradas, o escudo permite bloqueios, magias defensivas e variações visuais.</p>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="https://via.placeholder.com/600x400/0d0d0d/e63946?text=Colet%C3%A1veis" alt="Coletáveis">
+                    </div>
+                    <h4>Coletáveis</h4>
+                    <p><strong>Frascos de tinta:</strong> restauram HP e/ou MP. <strong>Fragmentos de cor:</strong> obtidos ao derrotar bosses cromáticos, restauram cores primárias, liberam novas magias e mudam a estética do castelo.</p>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="https://via.placeholder.com/600x400/0d0d0d/6c757d?text=Status+Negativos" alt="Status Negativos">
+                    </div>
+                    <h4>Status Negativos</h4>
+                    <p>Inimigos e armadilhas podem aplicar lentidão, cegueira temporária (escurecimento parcial da tela) e drenagem de cor, que reduz temporariamente a eficácia de magias.</p>
+                </div>
+
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="https://via.placeholder.com/600x400/0d0d0d/457b9d?text=Magias+de+Cor" alt="Magias de Cor">
+                    </div>
+                    <h4>Progressão por Magias de Cor</h4>
+                    <p><strong>Vermelho Rubi:</strong> ataque físico potenciado. <strong>Verde Esmeralda:</strong> cura gradual ou instantânea do HP. <strong>Azul Turquesa:</strong> defesa mágica e escudos temporários com redução de dano.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HUD / INTERFACE -->
+    <section class="gallery-section bg-dark">
+        <div class="container">
+            <h3 class="section-title">Interface e HUD</h3>
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="https://via.placeholder.com/600x400/0d0d0d/e63946?text=HUD+Interface" alt="HUD do jogo">
+                </div>
+                <div class="gallery-text">
+                    <h4>Elementos da Interface</h4>
+                    <p><strong>Barra de HP:</strong> exibida no canto superior da tela, indica de 0% a 100% dos pontos de vida do Herói X. Ao chegar a zero, o herói é derrotado e retorna ao Salão do Trono.</p>
+                    <p><strong>Barra de MP:</strong> dedicada às magias e ao Pincel da Aura. Regenera lentamente fora de combate, reforçando o planejamento no uso de habilidades especiais.</p>
+                    <p><strong>Barra de Stamina:</strong> representa o fôlego do herói para correr, pular, atacar e bloquear. Quando baixa, ataques ficam mais lentos, a defesa menos eficaz e a mobilidade reduzida.</p>
+                    <p><strong>Escudo-Godê:</strong> exibido com três compartimentos para as cores vermelha, verde e azul. Conforme as cores são restauradas, o jogador visualiza esse progresso diretamente no HUD.</p>
+                    <p><strong>Slots de Magia:</strong> ícones RGB no canto inferior, representando as magias de ataque (vermelho), cura (verde) e defesa (azul), conforme são desbloqueadas durante a progressão.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="container">
+            <p>© 2025 | Projeto Interdisciplinar - IJD001 & ITI010</p>
+            <p class="footer-subtitle">Prof° Dr. João Emmanuel D. Alkmin Neves & Prof° Eduardo Antonio Vicentini</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
