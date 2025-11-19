@@ -4,8 +4,737 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O Reino sem Cor | Projeto Interdisciplinar</title>
-    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET & VARIÁVEIS ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cor-primaria: #e63946;
+            --cor-secundaria: #2a9d8f;
+            --cor-terciaria: #457b9d;
+            --cor-fundo: #0d0d0d;
+            --cor-fundo-alt: #1a1a1a;
+            --cor-texto: #f1f1f1;
+            --cor-cinza: #6c757d;
+            --fonte-titulo: 'Cinzel', serif;
+            --fonte-corpo: 'Inter', sans-serif;
+            --transicao: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--fonte-corpo);
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--cor-primaria);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            color: var(--cor-primaria);
+            cursor: pointer;
+            transition: var(--transicao);
+        }
+
+        .logo:hover {
+            color: var(--cor-secundaria);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transicao);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cor-primaria);
+            transition: var(--transicao);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--cor-primaria);
+        }
+
+        .btn-nav {
+            background: var(--cor-primaria);
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
+            color: #fff !important;
+        }
+
+        .btn-nav:hover {
+            background: #d62839;
+            transform: translateY(-2px);
+        }
+
+        .btn-nav::after {
+            display: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--cor-texto);
+            transition: var(--transicao);
+            border-radius: 2px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--cor-fundo-alt) 0%, var(--cor-fundo) 100%);
+            border-bottom: 3px solid var(--cor-primaria);
+            padding: 4rem 0;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease;
+        }
+
+        .hero-title {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria), var(--cor-terciaria));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--cor-cinza);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            animation: fadeInRight 1s ease;
+        }
+
+        .hero-image img {
+            border-radius: 10px;
+            border: 3px solid var(--cor-primaria);
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+        }
+
+        /* ========== BOTÕES ========== */
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transicao);
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--cor-primaria);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #d62839;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--cor-secundaria);
+            color: var(--cor-secundaria);
+        }
+
+        .btn-secondary:hover {
+            background: var(--cor-secundaria);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* ========== SEÇÕES ========== */
+        .section-title {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--cor-secundaria);
+        }
+
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            color: var(--cor-cinza);
+        }
+
+        /* ========== INFO SECTION ========== */
+        .info-section {
+            padding: 5rem 0;
+            background: var(--cor-fundo-alt);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            justify-items: center;
+        }
+
+        .team-card {
+            background: var(--cor-fundo);
+            padding: 2rem;
+            border-radius: 50%;
+            width: 220px;
+            height: 220px;
+            text-align: center;
+            border: 3px solid var(--cor-primaria);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+            transition: var(--transicao);
+        }
+
+        .team-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.5);
+        }
+
+        .team-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            border: 2px solid var(--cor-secundaria);
+        }
+
+        .team-card h4 {
+            color: var(--cor-secundaria);
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+
+        .team-card .ra {
+            color: var(--cor-cinza);
+            font-size: 0.85rem;
+        }
+
+        .course-info {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--cor-fundo);
+            border-radius: 10px;
+            border: 1px solid var(--cor-cinza);
+        }
+
+        .course-info p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        /* ========== GAME SECTION ========== */
+        .game-section {
+            padding: 5rem 0;
+            background: var(--cor-fundo);
+        }
+
+        .game-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 3px solid var(--cor-primaria);
+            box-shadow: 0 10px 40px rgba(230, 57, 70, 0.3);
+        }
+
+        .game-placeholder {
+            aspect-ratio: 16/9;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .game-placeholder p {
+            color: var(--cor-cinza);
+            font-size: 1.2rem;
+        }
+
+        .game-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+        }
+
+        /* ========== DOCUMENTAÇÃO ========== */
+        .doc-header {
+            padding: 5rem 0 3rem;
+            background: linear-gradient(135deg, var(--cor-fundo-alt) 0%, var(--cor-fundo) 100%);
+            text-align: center;
+        }
+
+        .doc-header h2 {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 2rem;
+            color: var(--cor-primaria);
+        }
+
+        .doc-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .doc-meta-item {
+            background: var(--cor-fundo);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--cor-cinza);
+        }
+
+        .doc-meta-item strong {
+            color: var(--cor-primaria);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .doc-meta-item p {
+            color: var(--cor-texto);
+        }
+
+        /* ========== GALERIA ========== */
+        .gallery-section {
+            padding: 5rem 0;
+        }
+
+        .gallery-section.bg-dark {
+            background: var(--cor-fundo-alt);
+        }
+
+        .gallery-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .gallery-image img {
+            border-radius: 10px;
+            border: 2px solid var(--cor-primaria);
+            box-shadow: 0 5px 20px rgba(230, 57, 70, 0.3);
+        }
+
+        .gallery-text h4 {
+            color: var(--cor-primaria);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-card {
+            background: var(--cor-fundo);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--cor-cinza);
+            transition: var(--transicao);
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--cor-primaria);
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+        }
+
+        .gallery-card-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .gallery-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transicao);
+        }
+
+        .gallery-card:hover .gallery-card-image img {
+            transform: scale(1.1);
+        }
+
+        .gallery-card h4 {
+            color: var(--cor-primaria);
+            padding: 1rem 1.5rem 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .gallery-card p {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--cor-cinza);
+            line-height: 1.6;
+        }
+
+        /* ========== CARROSSEL ========== */
+        .carousel-container {
+            position: relative;
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+
+        .carousel-wrapper {
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid var(--cor-primaria);
+        }
+
+        .carousel-text {
+            margin-top: 1.5rem;
+            padding: 0 2rem;
+        }
+
+        .carousel-text h4 {
+            color: var(--cor-primaria);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .carousel-text p {
+            color: var(--cor-cinza);
+            line-height: 1.6;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            padding: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: var(--transicao);
+            z-index: 10;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: var(--cor-primaria);
+        }
+
+        .carousel-btn.prev {
+            left: -25px;
+        }
+
+        .carousel-btn.next {
+            right: -25px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-indicators .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--cor-cinza);
+            cursor: pointer;
+            transition: var(--transicao);
+        }
+
+        .carousel-indicators .dot.active {
+            background: var(--cor-primaria);
+            transform: scale(1.2);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--cor-fundo);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 2px solid var(--cor-primaria);
+        }
+
+        footer p {
+            color: var(--cor-cinza);
+            margin: 0.5rem 0;
+        }
+
+        .footer-subtitle {
+            font-size: 0.9rem;
+        }
+
+        /* ========== ANIMAÇÕES ========== */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
+
+        /* Tablets (768px e abaixo) */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(13, 13, 13, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                transition: var(--transicao);
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .gallery-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .doc-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .carousel-btn.prev {
+                left: 5px;
+            }
+
+            .carousel-btn.next {
+                right: 5px;
+            }
+
+            .carousel-item img {
+                max-height: 300px;
+            }
+        }
+
+        /* Mobile (480px e abaixo) */
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .game-container iframe {
+                min-height: 300px;
+            }
+
+            .carousel-text {
+                padding: 0 1rem;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- MENU FIXO -->
@@ -14,7 +743,7 @@
             <h1 class="logo">O Reino sem Cor</h1>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#inicio">Início</a></li>
-                <li><a href="documentacao.html">Documentação</a></li>
+                <li><a href="#documentacao">Documentação</a></li>
                 <li><a href="#jogo" class="btn-nav">Jogar</a></li>
             </ul>
             <button class="menu-toggle" id="menuToggle" aria-label="Menu">
@@ -31,11 +760,11 @@
                 <p class="hero-subtitle">Um jogo 2D de fantasia onde o mundo renasce em cores conforme você avança.</p>
                 <div class="hero-buttons">
                     <a href="#jogo" class="btn btn-primary">Jogar Agora</a>
-                    <a href="documentacao.html" class="btn btn-secondary">Documentação</a>
+                    <a href="#documentacao" class="btn btn-secondary">Documentação</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://via.placeholder.com/500x400/1a1a1a/e63946?text=O+Reino+Sem+Cor" alt="Imagem do jogo O Reino sem Cor">
+                <img src="./assets/cenarios/reino_x.png" alt="Imagem do jogo O Reino sem Cor">
             </div>
         </div>
     </section>
@@ -52,22 +781,22 @@
             <!-- CARDS REDONDOS DOS MEMBROS -->
             <div class="team-grid">
                 <div class="team-card">
-                    <img src="https://via.placeholder.com/150/2a9d8f/ffffff?text=GC" alt="Gabriel Cesario">
+                    <img src="./assets/inimigos/aspirante_sabio.png" alt="Gabriel Cesario">
                     <h4>Gabriel Cesario</h4>
                     <p class="ra">RA: 0040962523025</p>
                 </div>
                 <div class="team-card">
-                    <img src="https://via.placeholder.com/150/457b9d/ffffff?text=GS" alt="Gustavo Santos">
+                    <img src="./assets/inimigos/sapo_pugilista.png" alt="Gustavo Santos">
                     <h4>Gustavo Santos</h4>
-                    <p class="ra">RA: 000000</p>
+                    <p class="ra">RA: 0040962523014</p>
                 </div>
                 <div class="team-card">
-                    <img src="https://via.placeholder.com/150/e63946/ffffff?text=LHS" alt="Luiz Henrique Saia">
+                    <img src="./assets/personagens/heroi_x.png" alt="Luiz Henrique Saia">
                     <h4>Luiz Henrique Saia</h4>
                     <p class="ra">RA: 0040962523037</p>
                 </div>
                 <div class="team-card">
-                    <img src="https://via.placeholder.com/150/2a9d8f/ffffff?text=VHB" alt="Vinicius Heleno Bassani">
+                    <img src="./assets/personagens/rei_x.png" alt="Vinicius Heleno Bassani">
                     <h4>Vinícius Heleno Bassani</h4>
                     <p class="ra">RA: 0040962523007</p>
                 </div>
@@ -95,6 +824,222 @@
         </div>
     </section>
 
+    <!-- CABEÇALHO DOCUMENTAÇÃO -->
+    <section id="documentacao" class="doc-header">
+        <div class="container">
+            <h2>Documentação do Jogo</h2>
+            <div class="doc-meta">
+                <div class="doc-meta-item">
+                    <strong>Nome:</strong>
+                    <p>O Reino sem Cor</p>
+                </div>
+                <div class="doc-meta-item">
+                    <strong>Gênero:</strong>
+                    <p>Sobrevivência / Fantasia Medieval</p>
+                </div>
+                <div class="doc-meta-item">
+                    <strong>Ferramentas:</strong>
+                    <p>GDevelop, Wix e Canva</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARROSSEL DE PERSONAGENS -->
+    <section class="gallery-section bg-dark">
+        <div class="container">
+            <h3 class="section-title">Personagens</h3>
+            <div class="carousel-container personagens">
+                <button class="carousel-btn prev">&#10094;</button>
+                <div class="carousel-wrapper">
+                    <div class="carousel-track">
+                        <div class="carousel-item">
+                            <img src="./assets/personagens/heroi_x.png" alt="Herói X">
+                            <div class="carousel-text">
+                                <h4>Herói X</h4>
+                                <p>Portador do Pincel da Aura e do Escudo-Godê, o protagonista que devolve as cores ao reino.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/personagens/rei_x.png" alt="Rei X">
+                            <div class="carousel-text">
+                                <h4>Rei X</h4>
+                                <p>Monarca sábio que confia ao herói a missão de restaurar o Reino Esmaecido.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/personagens/mago_x.png" alt="Mago X">
+                            <div class="carousel-text">
+                                <h4>Mago X</h4>
+                                <p>Conselheiro corrompido que roubou as cores do mundo e distorce a realidade.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/bosses/galinacio.png" alt="Galinacio">
+                            <div class="carousel-text">
+                                <h4>Galinacio (Boss Vermelho)</h4>
+                                <p>Frango mágico caótico do Salão Rubi — representa a fúria e o caos.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/bosses/dragao_pedra_esmeralda.png" alt="Dragão de Pedra Esmeralda">
+                            <div class="carousel-text">
+                                <h4>Dragão de Pedra Esmeralda (Boss Verde)</h4>
+                                <p>Guardião dos Jardins Esmeralda, símbolo da vida e regeneração.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/bosses/agua_viva.png" alt="Água-Viva">
+                            <div class="carousel-text">
+                                <h4>Água-Viva (Boss Azul)</h4>
+                                <p>Guardião da Biblioteca Turquesa — representa a reflexão e paciência.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn next">&#10095;</button>
+            </div>
+            <div class="carousel-indicators personagens"></div>
+        </div>
+    </section>
+
+    <!-- INIMIGOS -->
+    <section class="gallery-section">
+        <div class="container">
+            <h3 class="section-title">Inimigos</h3>
+            <div class="gallery-grid">
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/inimigos/aspirante_ratalheiro.png" alt="Aspirante Ratalheiro">
+                    </div>
+                    <h4>Aspirante Ratalheiro</h4>
+                    <p>Rato cavaleiro com espada. Movimento desajeitado mas persistente no combate corpo a corpo.</p>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/inimigos/aspirante_heroi.png" alt="Aspirante Herói">
+                    </div>
+                    <h4>Aspirante Herói</h4>
+                    <p>Sapo cavaleiro aspirante que tenta imitar os movimentos heroicos do protagonista.</p>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/inimigos/aspirante_sabio.png" alt="Aspirante Sábio">
+                    </div>
+                    <h4>Aspirante Sábio</h4>
+                    <p>Mascote mágico que conjura bolas de fogo à distância. Ataque de longo alcance.</p>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/inimigos/sapo_pugilista.png" alt="Sapo Pugilista">
+                    </div>
+                    <h4>Sapo Pugilista</h4>
+                    <p>Sapo boxeador com socos rápidos e postura de guarda. Combate ágil de curta distância.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CENÁRIOS -->
+    <section class="gallery-section bg-dark">
+        <div class="container">
+            <h3 class="section-title">Cenários</h3>
+            <div class="gallery-grid">
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/cenarios/sala_quadros.png" alt="Sala dos Quadros">
+                    </div>
+                    <h4>Sala dos Quadros</h4>
+                    <p>Hub central com três quadros mágicos que levam às fases cromáticas.</p>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/cenarios/biblioteca_turquesa.png" alt="Biblioteca Turquesa">
+                    </div>
+                    <h4>Biblioteca Turquesa</h4>
+                    <p>Torre vertical de espelhos e livros azuis, onde o tempo parece não mover-se.</p>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/cenarios/salao_rubi.png" alt="Salão Rubi">
+                    </div>
+                    <h4>Salão Rubi</h4>
+                    <p>Banquete em ruínas iluminado pelas chamas vermelhas da fúria. Lar do Galinacio.</p>
+                </div>
+                <div class="gallery-card">
+                    <div class="gallery-card-image">
+                        <img src="./assets/cenarios/jardins_esmeralda.png" alt="Jardins Esmeralda">
+                    </div>
+                    <h4>Jardins Esmeralda</h4>
+                    <p>Área de serenidade verde coberta por vegetação vibrante e estátuas animadas pelo dragão.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARROSSEL DE MECÂNICAS -->
+    <section class="gallery-section">
+        <div class="container">
+            <h3 class="section-title">Mecânicas Principais</h3>
+            <div class="carousel-container mecanicas">
+                <button class="carousel-btn prev">&#10094;</button>
+                <div class="carousel-wrapper">
+                    <div class="carousel-track">
+                        <div class="carousel-item">
+                            <img src="https://via.placeholder.com/600x400/0d0d0d/e63946?text=Movimento+2D" alt="Movimentação">
+                            <div class="carousel-text">
+                                <h4>Movimentação 2D</h4>
+                                <p>Controle lateral com corrida e salto de precisão.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://via.placeholder.com/600x400/0d0d0d/2a9d8f?text=Magias+Coloridas" alt="Magias">
+                            <div class="carousel-text">
+                                <h4>Magias Coloridas</h4>
+                                <p>Cada cor representa um poder: ataque, cura e defesa.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://via.placeholder.com/600x400/0d0d0d/457b9d?text=HUD" alt="HUD">
+                            <div class="carousel-text">
+                                <h4>Sistema de HUD</h4>
+                                <p>Interface limpa com barras de HP, MP e slots de feitiços.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://via.placeholder.com/600x400/0d0d0d/e63946?text=Progress%C3%A3o+Visual" alt="Progressão Visual">
+                            <div class="carousel-text">
+                                <h4>Progressão Visual</h4>
+                                <p>O mundo se torna colorido conforme o jogador avança.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn next">&#10095;</button>
+            </div>
+            <div class="carousel-indicators mecanicas"></div>
+        </div>
+    </section>
+
+    <!-- HUD / INTERFACE -->
+    <section class="gallery-section bg-dark">
+        <div class="container">
+            <h3 class="section-title">Interface e HUD</h3>
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="https://via.placeholder.com/600x400/0d0d0d/e63946?text=HUD+Interface" alt="HUD do jogo">
+                </div>
+                <div class="gallery-text">
+                    <h4>Elementos da Interface</h4>
+                    <p><strong>Barra de HP:</strong> canto superior esquerdo, cor vermelha.</p>
+                    <p><strong>Barra de MP:</strong> logo abaixo, cor azul.</p>
+                    <p><strong>Slots de Magia:</strong> canto inferior direito, ícones RGB.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
     <footer>
         <div class="container">
             <p>&copy; 2025 | Projeto Interdisciplinar - IJD001 & ITI010</p>
@@ -102,6 +1047,64 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // ======== MENU MOBILE ========
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        }
+
+        // ======== SMOOTH SCROLL ========
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const id = a.getAttribute('href');
+                if (!id || id === '#') return;
+                const el = document.querySelector(id);
+                if (el) {
+                    e.preventDefault();
+                    window.scrollTo({ top: el.offsetTop - 70, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ======== FUNÇÃO GENÉRICA PARA CARROSSEIS ========
+        function initCarousel(classe) {
+            const container = document.querySelector(`.carousel-container.${classe}`);
+            if (!container) return;
+
+            const track = container.querySelector('.carousel-track');
+            const items = container.querySelectorAll('.carousel-item');
+            const nextBtn = container.querySelector('.next');
+            const prevBtn = container.querySelector('.prev');
+            const indicatorsContainer = document.querySelector(`.carousel-indicators.${classe}`);
+            let index = 0;
+
+            items.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => { index = i; update(); };
+                indicatorsContainer.appendChild(dot);
+            });
+            const dots = indicatorsContainer.querySelectorAll('.dot');
+
+            function update() {
+                const w = items[0].clientWidth;
+                track.style.transform = `translateX(-${w * index}px)`;
+                dots.forEach((d, i) => d.classList.toggle('active', i === index));
+            }
+
+            nextBtn.onclick = () => { index = (index + 1) % items.length; update(); };
+            prevBtn.onclick = () => { index = (index - 1 + items.length) % items.length; update(); };
+            window.addEventListener('resize', update);
+        }
+
+        // Inicializa os dois carrosséis
+        initCarousel('personagens');
+        initCarousel('mecanicas');
+    </script>
 </body>
 </html>
