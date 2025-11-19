@@ -18,7 +18,7 @@ Este é um projeto interdisciplinar que combina Tecnologia da Informação e Pri
 
 ## Documentação
 
-### 📁 Estrutura do projto
+### Estrutura do projeto
 
 ```bash
 api_corporate/
