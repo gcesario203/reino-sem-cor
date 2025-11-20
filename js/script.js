@@ -31,8 +31,13 @@ function initCarousel(classe) {
     const nextBtn = container.querySelector('.next');
     const prevBtn = container.querySelector('.prev');
     const indicatorsContainer = document.querySelector(`.carousel-indicators.${classe}`);
-    let index = 0;
+    if (!track || items.length === 0 || !nextBtn || !prevBtn || !indicatorsContainer) return;
 
+    let index = 0;
+    track.style.transition = 'transform 0.4s ease';
+
+    // criar dots
+    indicatorsContainer.innerHTML = '';
     items.forEach((_, i) => {
         const dot = document.createElement('div');
         dot.className = 'dot' + (i === 0 ? ' active' : '');
@@ -47,10 +52,25 @@ function initCarousel(classe) {
         dots.forEach((d, i) => d.classList.toggle('active', i === index));
     }
 
-    nextBtn.onclick = () => { index = (index + 1) % items.length; update(); };
-    prevBtn.onclick = () => { index = (index - 1 + items.length) % items.length; update(); };
+    nextBtn.addEventListener('click', () => {
+        index = (index + 1) % items.length;
+        update();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        index = (index - 1 + items.length) % items.length;
+        update();
+    });
+
+    // re-calcula posição ao redimensionar (útil em responsividade)
     window.addEventListener('resize', update);
+
+    // inicia posição correta
+    update();
 }
 
-// Inicializa o carrossel de personagens
+// Inicializa os carrosseis
 initCarousel('personagens');
+initCarousel('inimigos');
+initCarousel('cenarios');
+initCarousel('mecanicas');
