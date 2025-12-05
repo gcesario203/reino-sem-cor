@@ -1,0 +1,301 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7h3xm8k1vr2p"]
+
+[ext_resource type="Script" uid="uid://c0jprhaadke1k" path="res://scripts/levels/turquoise_library.gd" id="1_library"]
+[ext_resource type="PackedScene" uid="uid://cxl7wkbrp20fb" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://buushqn0boqct" path="res://scenes/boss/jellyfish.tscn" id="3_boss"]
+[ext_resource type="PackedScene" uid="uid://buv6d6xr1lifp" path="res://scenes/ui/hud.tscn" id="4_hud"]
+[ext_resource type="Texture2D" uid="uid://ddvcy2ap0l507" path="res://assets/backgrounds/biblioteca_turquesa.png" id="6_bg_tower"]
+[ext_resource type="Texture2D" uid="uid://q3nxcbywcdvf" path="res://assets/sprites/environment/platform_main.png" id="7_platform_main"]
+[ext_resource type="Texture2D" uid="uid://blftiekc57wlu" path="res://assets/sprites/environment/platform_medium.png" id="8_platform_medium"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(600, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_transition"]
+size = Vector2(500, 100)
+
+[node name="TurquoiseLibrary" type="Node2D"]
+script = ExtResource("1_library")
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="LayerSky" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(0, 5000)
+
+[node name="SkySprite" type="Sprite2D" parent="Background/LayerSky"]
+position = Vector2(960, 2500)
+scale = Vector2(3, 8.5)
+
+[node name="LayerTower" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(0, 5000)
+
+[node name="TowerSprite" type="Sprite2D" parent="Background/LayerTower"]
+position = Vector2(960, 2500)
+scale = Vector2(2, 3)
+texture = ExtResource("6_bg_tower")
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Section1" type="Node2D" parent="Platforms"]
+
+[node name="PlatformInitial" type="StaticBody2D" parent="Platforms/Section1"]
+position = Vector2(600, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section1/PlatformInitial"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section1/PlatformInitial"]
+texture = ExtResource("7_platform_main")
+
+[node name="PlatformLeft" type="StaticBody2D" parent="Platforms/Section1"]
+position = Vector2(300, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section1/PlatformLeft"]
+scale = Vector2(0.5, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section1/PlatformLeft"]
+texture = ExtResource("7_platform_main")
+
+[node name="PlatformRight" type="StaticBody2D" parent="Platforms/Section1"]
+position = Vector2(900, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section1/PlatformRight"]
+scale = Vector2(0.5, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section1/PlatformRight"]
+texture = ExtResource("7_platform_main")
+
+[node name="PlatformCenter" type="StaticBody2D" parent="Platforms/Section1"]
+position = Vector2(600, 900)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section1/PlatformCenter"]
+scale = Vector2(0.67, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section1/PlatformCenter"]
+texture = ExtResource("7_platform_main")
+
+[node name="Section2" type="Node2D" parent="Platforms"]
+
+[node name="Platform1" type="StaticBody2D" parent="Platforms/Section2"]
+position = Vector2(850, 1200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section2/Platform1"]
+scale = Vector2(0.58, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section2/Platform1"]
+texture = ExtResource("7_platform_main")
+
+[node name="Platform2" type="StaticBody2D" parent="Platforms/Section2"]
+position = Vector2(350, 1500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section2/Platform2"]
+scale = Vector2(0.58, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section2/Platform2"]
+texture = ExtResource("7_platform_main")
+
+[node name="Platform3" type="StaticBody2D" parent="Platforms/Section2"]
+position = Vector2(850, 1800)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section2/Platform3"]
+scale = Vector2(0.58, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section2/Platform3"]
+texture = ExtResource("7_platform_main")
+
+[node name="Platform4" type="StaticBody2D" parent="Platforms/Section2"]
+position = Vector2(600, 2050)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section2/Platform4"]
+scale = Vector2(0.67, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section2/Platform4"]
+texture = ExtResource("7_platform_main")
+
+[node name="Section3" type="Node2D" parent="Platforms"]
+
+[node name="Platform1" type="StaticBody2D" parent="Platforms/Section3"]
+position = Vector2(300, 2400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section3/Platform1"]
+scale = Vector2(0.5, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section3/Platform1"]
+texture = ExtResource("7_platform_main")
+
+[node name="Platform2" type="StaticBody2D" parent="Platforms/Section3"]
+position = Vector2(900, 2700)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section3/Platform2"]
+scale = Vector2(0.5, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section3/Platform2"]
+texture = ExtResource("7_platform_main")
+
+[node name="Platform3" type="StaticBody2D" parent="Platforms/Section3"]
+position = Vector2(300, 3000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section3/Platform3"]
+scale = Vector2(0.5, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section3/Platform3"]
+texture = ExtResource("7_platform_main")
+
+[node name="Platform4" type="StaticBody2D" parent="Platforms/Section3"]
+position = Vector2(600, 3200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section3/Platform4"]
+scale = Vector2(0.58, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section3/Platform4"]
+texture = ExtResource("7_platform_main")
+
+[node name="Section4" type="Node2D" parent="Platforms"]
+
+[node name="Platform1" type="StaticBody2D" parent="Platforms/Section4"]
+position = Vector2(900, 3500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section4/Platform1"]
+scale = Vector2(0.58, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section4/Platform1"]
+texture = ExtResource("7_platform_main")
+
+[node name="Platform2" type="StaticBody2D" parent="Platforms/Section4"]
+position = Vector2(300, 3800)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section4/Platform2"]
+scale = Vector2(0.58, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section4/Platform2"]
+texture = ExtResource("7_platform_main")
+
+[node name="PlatformFinal" type="StaticBody2D" parent="Platforms/Section4"]
+position = Vector2(600, 4100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Section4/PlatformFinal"]
+scale = Vector2(0.83, 1)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Section4/PlatformFinal"]
+texture = ExtResource("7_platform_main")
+
+[node name="Arena" type="Node2D" parent="Platforms"]
+
+[node name="PlatformMain" type="StaticBody2D" parent="Platforms/Arena"]
+position = Vector2(600, 4400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Arena/PlatformMain"]
+scale = Vector2(1.33, 2)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Arena/PlatformMain"]
+texture = ExtResource("7_platform_main")
+
+[node name="PlatformLeftHigh" type="StaticBody2D" parent="Platforms/Arena"]
+position = Vector2(250, 4250)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Arena/PlatformLeftHigh"]
+scale = Vector2(0.33, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Arena/PlatformLeftHigh"]
+texture = ExtResource("8_platform_medium")
+
+[node name="PlatformRightHigh" type="StaticBody2D" parent="Platforms/Arena"]
+position = Vector2(950, 4250)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Arena/PlatformRightHigh"]
+scale = Vector2(0.33, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Arena/PlatformRightHigh"]
+texture = ExtResource("8_platform_medium")
+
+[node name="PlatformLeftLow" type="StaticBody2D" parent="Platforms/Arena"]
+position = Vector2(250, 4550)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Arena/PlatformLeftLow"]
+scale = Vector2(0.33, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Arena/PlatformLeftLow"]
+texture = ExtResource("8_platform_medium")
+
+[node name="PlatformRightLow" type="StaticBody2D" parent="Platforms/Arena"]
+position = Vector2(950, 4550)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Arena/PlatformRightLow"]
+scale = Vector2(0.33, 0.6)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PlatformSprite" type="Sprite2D" parent="Platforms/Arena/PlatformRightLow"]
+texture = ExtResource("8_platform_medium")
+
+[node name="ArenaWalls" type="Node2D" parent="Platforms/Arena"]
+
+[node name="WallLeft" type="StaticBody2D" parent="Platforms/Arena/ArenaWalls"]
+position = Vector2(50, 4400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Arena/ArenaWalls/WallLeft"]
+rotation = 1.5708
+scale = Vector2(1.67, 0.17)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="WallRight" type="StaticBody2D" parent="Platforms/Arena/ArenaWalls"]
+position = Vector2(1150, 4400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Arena/ArenaWalls/WallRight"]
+rotation = 1.5708
+scale = Vector2(1.67, 0.17)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Ceiling" type="StaticBody2D" parent="Platforms/Arena/ArenaWalls"]
+position = Vector2(600, 4050)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Arena/ArenaWalls/Ceiling"]
+scale = Vector2(1.83, 0.2)
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="PhaseTransitionArea" type="Area2D" parent="."]
+position = Vector2(600, 4100)
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhaseTransitionArea"]
+shape = SubResource("RectangleShape2D_transition")
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(600, 4200)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+
+[node name="Boss" parent="." instance=ExtResource("3_boss")]
+position = Vector2(600, 2520)
+
+[node name="HUD" parent="." instance=ExtResource("4_hud")]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Potions" type="Node2D" parent="."]
+
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="Lighting" type="CanvasModulate" parent="."]
+color = Color(0.7, 0.85, 1, 1)

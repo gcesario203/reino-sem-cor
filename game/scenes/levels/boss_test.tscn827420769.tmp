@@ -1,0 +1,244 @@
+[gd_scene load_steps=9 format=3 uid="uid://do2lwhfkxjpbb"]
+
+[ext_resource type="PackedScene" uid="uid://cxl7wkbrp20fb" path="res://scenes/player/player.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/boss/jellyfish.tscn" id="2"]
+[ext_resource type="Script" uid="uid://bkva1gwh108wp" path="res://scripts/managers/phase_transition.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://blftiekc57wlu" path="res://assets/sprites/environment/platform_medium.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://q3nxcbywcdvf" path="res://assets/sprites/environment/platform_main.png" id="5"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(300, 40)
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(40, 2000)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(400, 100)
+
+[node name="BossTestLevel" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 1400.0
+offset_bottom = 2000.0
+color = Color(0.08, 0.1, 0.15, 1)
+
+[node name="PhaseTransitionManager" type="Node" parent="."]
+script = ExtResource("3")
+
+[node name="Phase1Section" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Phase1Section"]
+offset_left = 400.0
+offset_top = 1700.0
+offset_right = 800.0
+offset_bottom = 1750.0
+text = "FASE 1: FUGA VERTICAL
+Boss é INVENCÍVEL - Fuja!"
+horizontal_alignment = 1
+
+[node name="VerticalPlatforms" type="Node2D" parent="Phase1Section"]
+
+[node name="StartPlatform" type="StaticBody2D" parent="Phase1Section/VerticalPlatforms"]
+position = Vector2(600, 1800)
+
+[node name="Sprite2D" type="Sprite2D" parent="Phase1Section/VerticalPlatforms/StartPlatform"]
+modulate = Color(0.4, 0.6, 0.8, 1)
+scale = Vector2(1.5, 1)
+texture = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase1Section/VerticalPlatforms/StartPlatform"]
+shape = SubResource("1")
+
+[node name="Platform1" type="StaticBody2D" parent="Phase1Section/VerticalPlatforms"]
+position = Vector2(400, 1500)
+
+[node name="Sprite2D" type="Sprite2D" parent="Phase1Section/VerticalPlatforms/Platform1"]
+modulate = Color(0.4, 0.6, 0.8, 1)
+scale = Vector2(1.5, 1)
+texture = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase1Section/VerticalPlatforms/Platform1"]
+shape = SubResource("1")
+
+[node name="Platform2" type="StaticBody2D" parent="Phase1Section/VerticalPlatforms"]
+position = Vector2(750, 1200)
+
+[node name="Sprite2D" type="Sprite2D" parent="Phase1Section/VerticalPlatforms/Platform2"]
+modulate = Color(0.4, 0.6, 0.8, 1)
+scale = Vector2(1.5, 1)
+texture = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase1Section/VerticalPlatforms/Platform2"]
+shape = SubResource("1")
+
+[node name="Platform3" type="StaticBody2D" parent="Phase1Section/VerticalPlatforms"]
+position = Vector2(450, 900)
+
+[node name="Sprite2D" type="Sprite2D" parent="Phase1Section/VerticalPlatforms/Platform3"]
+modulate = Color(0.4, 0.6, 0.8, 1)
+scale = Vector2(1.5, 1)
+texture = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase1Section/VerticalPlatforms/Platform3"]
+shape = SubResource("1")
+
+[node name="Platform4" type="StaticBody2D" parent="Phase1Section/VerticalPlatforms"]
+position = Vector2(700, 600)
+
+[node name="Sprite2D" type="Sprite2D" parent="Phase1Section/VerticalPlatforms/Platform4"]
+modulate = Color(0.4, 0.6, 0.8, 1)
+scale = Vector2(1.5, 1)
+texture = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase1Section/VerticalPlatforms/Platform4"]
+shape = SubResource("1")
+
+[node name="TopPlatform" type="StaticBody2D" parent="Phase1Section/VerticalPlatforms"]
+position = Vector2(600, 300)
+
+[node name="Sprite2D" type="Sprite2D" parent="Phase1Section/VerticalPlatforms/TopPlatform"]
+modulate = Color(0.4, 0.8, 1, 1)
+scale = Vector2(2, 1.2)
+texture = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase1Section/VerticalPlatforms/TopPlatform"]
+shape = SubResource("1")
+
+[node name="Boundaries" type="Node2D" parent="Phase1Section"]
+
+[node name="LeftWall" type="StaticBody2D" parent="Phase1Section/Boundaries"]
+position = Vector2(200, 1000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase1Section/Boundaries/LeftWall"]
+shape = SubResource("3")
+
+[node name="RightWall" type="StaticBody2D" parent="Phase1Section/Boundaries"]
+position = Vector2(1000, 1000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase1Section/Boundaries/RightWall"]
+shape = SubResource("3")
+
+[node name="TransitionTrigger" type="Area2D" parent="Phase1Section" groups=["phase_transition_trigger"]]
+position = Vector2(600, 200)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase1Section/TransitionTrigger"]
+shape = SubResource("2")
+
+[node name="Label" type="Label" parent="Phase1Section/TransitionTrigger"]
+offset_left = -200.0
+offset_top = -80.0
+offset_right = 200.0
+offset_bottom = -40.0
+text = "Chegue aqui para Fase 2!"
+horizontal_alignment = 1
+
+[node name="Phase2Arena" type="Node2D" parent="."]
+position = Vector2(0, -800)
+
+[node name="Label" type="Label" parent="Phase2Arena"]
+offset_left = 400.0
+offset_top = 50.0
+offset_right = 800.0
+offset_bottom = 100.0
+text = "FASE 2: ARENA DO TOPO
+Boss VULNERÁVEL - Derrote-o!"
+horizontal_alignment = 1
+
+[node name="Platforms" type="Node2D" parent="Phase2Arena"]
+
+[node name="MainPlatform" type="StaticBody2D" parent="Phase2Arena/Platforms"]
+position = Vector2(600, 550)
+
+[node name="Sprite2D" type="Sprite2D" parent="Phase2Arena/Platforms/MainPlatform"]
+modulate = Color(0.3, 0.5, 0.7, 1)
+texture = ExtResource("5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase2Arena/Platforms/MainPlatform"]
+scale = Vector2(2.67, 2.5)
+shape = SubResource("1")
+
+[node name="FloatingPlatform1" type="StaticBody2D" parent="Phase2Arena/Platforms"]
+position = Vector2(350, 400)
+
+[node name="Sprite2D" type="Sprite2D" parent="Phase2Arena/Platforms/FloatingPlatform1"]
+modulate = Color(0.3, 0.5, 0.7, 1)
+texture = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase2Arena/Platforms/FloatingPlatform1"]
+scale = Vector2(0.67, 1)
+shape = SubResource("1")
+
+[node name="FloatingPlatform2" type="StaticBody2D" parent="Phase2Arena/Platforms"]
+position = Vector2(850, 400)
+
+[node name="Sprite2D" type="Sprite2D" parent="Phase2Arena/Platforms/FloatingPlatform2"]
+modulate = Color(0.3, 0.5, 0.7, 1)
+texture = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase2Arena/Platforms/FloatingPlatform2"]
+scale = Vector2(0.67, 1)
+shape = SubResource("1")
+
+[node name="FloatingPlatform3" type="StaticBody2D" parent="Phase2Arena/Platforms"]
+position = Vector2(450, 280)
+
+[node name="Sprite2D" type="Sprite2D" parent="Phase2Arena/Platforms/FloatingPlatform3"]
+modulate = Color(0.3, 0.5, 0.7, 1)
+texture = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase2Arena/Platforms/FloatingPlatform3"]
+scale = Vector2(0.67, 1)
+shape = SubResource("1")
+
+[node name="FloatingPlatform4" type="StaticBody2D" parent="Phase2Arena/Platforms"]
+position = Vector2(750, 280)
+
+[node name="Sprite2D" type="Sprite2D" parent="Phase2Arena/Platforms/FloatingPlatform4"]
+modulate = Color(0.3, 0.5, 0.7, 1)
+texture = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase2Arena/Platforms/FloatingPlatform4"]
+scale = Vector2(0.67, 1)
+shape = SubResource("1")
+
+[node name="Boundaries" type="Node2D" parent="Phase2Arena"]
+
+[node name="LeftWall" type="StaticBody2D" parent="Phase2Arena/Boundaries"]
+position = Vector2(200, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase2Arena/Boundaries/LeftWall"]
+scale = Vector2(1, 0.3)
+shape = SubResource("3")
+
+[node name="RightWall" type="StaticBody2D" parent="Phase2Arena/Boundaries"]
+position = Vector2(1000, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase2Arena/Boundaries/RightWall"]
+scale = Vector2(1, 0.3)
+shape = SubResource("3")
+
+[node name="Ceiling" type="StaticBody2D" parent="Phase2Arena/Boundaries"]
+position = Vector2(600, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phase2Arena/Boundaries/Ceiling"]
+scale = Vector2(2.67, 1)
+shape = SubResource("1")
+
+[node name="PlayerSpawnArena" type="Marker2D" parent="Phase2Arena" groups=["player_spawn_arena"]]
+position = Vector2(400, 500)
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(600, 1750)
+
+[node name="Boss" parent="." instance=ExtResource("2")]
+position = Vector2(600, 1600)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(600, 1000)
+limit_left = 200
+limit_top = -900
+limit_right = 1000
+limit_bottom = 1900
