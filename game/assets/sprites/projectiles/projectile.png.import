@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o6a7ciu7ogee"
-path="res://.godot/imported/agua_viva.png-069e6e795899ab42e8a5449ba393e87b.ctex"
+uid="uid://cc8bsvp7mh7x8"
+path="res://.godot/imported/projectile.png-945717e1264ab30e73b18b45485cf8cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/boss/jellyfish/agua_viva.png"
-dest_files=["res://.godot/imported/agua_viva.png-069e6e795899ab42e8a5449ba393e87b.ctex"]
+source_file="res://assets/sprites/projectiles/projectile.png"
+dest_files=["res://.godot/imported/projectile.png-945717e1264ab30e73b18b45485cf8cf.ctex"]
 
 [params]
 

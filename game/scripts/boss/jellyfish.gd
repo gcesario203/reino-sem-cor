@@ -10,7 +10,7 @@ var current_phase: BossPhase = BossPhase.PHASE_1_CHASE
 var current_attack_state: AttackState = AttackState.IDLE
 
 # Estatísticas
-@export var max_health: float = 200.0
+@export var max_health: float = 100.0
 @export var phase_1_speed: float = 150.0
 @export var phase_2_speed: float = 180.0
 @export var dash_speed: float = 450.0

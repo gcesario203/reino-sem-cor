@@ -12,7 +12,7 @@ config_version=5
 
 config/name="O Reino Sem Cor - Demo Biblioteca Turquesa"
 config/description="Demo da fase Biblioteca Turquesa do jogo O Reino Sem Cor"
-run/main_scene="uid://b7h3xm8k1vr2p"
+run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
