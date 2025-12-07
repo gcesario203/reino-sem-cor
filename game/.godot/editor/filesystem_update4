@@ -1,0 +1,11 @@
+res://scripts/levels/turquoise_library.gd
+res://scripts/managers/phase_transition.gd
+res://scripts/player/player.gd
+res://scenes/boss/jellyfish.tscn
+res://assets/sprites/tilesetresource/azure_library.tres
+res://scripts/boss/jellyfish.gd
+res://scenes/enemies/frog.tscn
+res://scripts/enemies/frog.gd
+res://scenes/player/player.tscn
+res://scripts/enemies/rat.gd
+res://scenes/enemies/rat.tscn

@@ -184,7 +184,7 @@ func _attack_behavior(delta):
 		player_ref.take_damage(attack_damage, global_position)
 	
 	if sprite and sprite.animation == "attack":
-		await sprite.animation_finished
+		await get_tree().create_timer(0.5).timeout
 	
 	_change_state(State.PATROL)
 
@@ -254,7 +254,7 @@ func _die():
 	
 	if sprite:
 		sprite.play("death")
-		await sprite.animation_finished
+		await get_tree().create_timer(0.5).timeout
 	
 	queue_free()
 

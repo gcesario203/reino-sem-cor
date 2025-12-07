@@ -234,7 +234,7 @@ func _die():
 		# Toca animação de morte
 		if sprite:
 				sprite.play("death")
-				await sprite.animation_finished
+				await get_tree().create_timer(0.5).timeout
 		
 		queue_free()
 

@@ -191,7 +191,7 @@ func start_ray_attack():
 	
 	fire_energy_ray()
 	
-	await sprite.animation_finished
+	await get_tree().create_timer(0.18).timeout
 	is_attacking = false
 	is_charging_ray = false
 	ray_timer = ray_cooldown
@@ -355,7 +355,7 @@ func start_ray_attack_improved():
 	
 	fire_energy_ray()
 	
-	await sprite.animation_finished
+	await get_tree().create_timer(0.18).timeout
 	
 	is_attacking = false
 	is_charging_ray = false
@@ -551,7 +551,7 @@ func die():
 	velocity = Vector2.ZERO
 	
 	sprite.play("death")
-	await sprite.animation_finished
+	await get_tree().create_timer(0.5).timeout
 	
 	drop_fragment()
 	boss_defeated.emit()

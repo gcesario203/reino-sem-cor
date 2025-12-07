@@ -255,7 +255,7 @@ func perform_attack():
 	# Ativar hitbox de ataque
 	if attack_area:
 		attack_area.monitoring = true
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.1).timeout
 
 		# Aplicar dano aos inimigos na área
 		for body in attack_area.get_overlapping_bodies():
@@ -275,7 +275,7 @@ func perform_attack():
 		attack_area.monitoring = false
 
 	# Aguardar fim da animação
-	await sprite.animation_finished
+	await get_tree().create_timer(0.5).timeout
 	is_attacking = false
 
 # Função para atualizar a direção da AttackArea
