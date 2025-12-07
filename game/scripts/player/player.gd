@@ -274,6 +274,8 @@ func update_coyote_time(delta):
 								coyote_timer = max(0, coyote_timer)  # Garante que não fica negativo
 
 func shoot_projectile():
+					# Animação rápida de ataque (sem bloquear movimento)
+				sprite.play("attack")
 				# Consumir mana
 				current_mp -= projectile_mana_cost
 				current_mp = max(0, current_mp)
@@ -309,11 +311,6 @@ func shoot_projectile():
 				attack_timer = attack_cooldown
 				
 				current_stamina -= STAMINA_COST_ATTACK
-				
-				# Animação rápida de ataque (sem bloquear movimento)
-				if sprite:
-								sprite.play("attack")
-								await get_tree().create_timer(0.2).timeout
 								# A animação voltará ao normal no update_animation()
 
 # Função antiga mantida para compatibilidade (não será mais usada)
