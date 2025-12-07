@@ -41,7 +41,7 @@ var block_damage_reduction = 0.5
 # ===== SISTEMA DE PROJÉTEIS =====
 var projectile_scene = preload("res://scenes/projectiles/projectile.tscn")
 var projectile_speed = 300.0
-var projectile_mana_cost = 3.0
+var projectile_mana_cost = 10.0
 
 # ===== SISTEMA DE MAGIAS =====
 var magic_red_active = false
