@@ -18,85 +18,91 @@ extends CanvasLayer
 var player: Node = null
 
 func _ready():
-	# Cores das barras
-	if hp_bar:
-		hp_bar.modulate = Color(1.0, 0.2, 0.2) # Vermelho
-	if mp_bar:
-		mp_bar.modulate = Color(0.2, 0.5, 1.0) # Azul
-	if stamina_bar:
-		stamina_bar.modulate = Color(1.0, 0.8, 0.0) # Amarelo/Dourado
-	
-	# Esperar um frame antes de procurar o jogador
-	await get_tree().process_frame
-	player = get_tree().get_first_node_in_group("player")
+		# Cores das barras
+		if hp_bar:
+				hp_bar.modulate = Color(1.0, 0.2, 0.2) # Vermelho
+		if mp_bar:
+				mp_bar.modulate = Color(0.2, 0.5, 1.0) # Azul
+		if stamina_bar:
+				stamina_bar.modulate = Color(1.0, 0.8, 0.0) # Amarelo/Dourado
+		
+		# CORRIGIDO BUG-012: Usar call_deferred com retry
+		call_deferred("_find_player")
 
-	if not player:
-		print("⚠️ HUD: Jogador não encontrado!")
+# CORRIGIDO BUG-012: Função separada para encontrar player com retry
+func _find_player():
+		player = get_tree().get_first_node_in_group("player")
+		
+		if not player:
+				# Tentar novamente após um curto delay se não encontrar
+				var retry_timer = get_tree().create_timer(0.1)
+				retry_timer.timeout.connect(_find_player)
+				print("⚠️ HUD: Jogador não encontrado, tentando novamente...")
 
 
 func _process(_delta):
-	if player:
-		update_hud()
+		if player:
+				update_hud()
 
 
 func update_hud():
-	# ----------------------- HP -----------------------
-	if hp_bar:
-		hp_bar.value = (player.current_hp / player.max_hp) * 100
-	if hp_label:
-		hp_label.text = "HP: %d/%d" % [player.current_hp, player.max_hp]
+		# ----------------------- HP -----------------------
+		if hp_bar:
+				hp_bar.value = (player.current_hp / player.max_hp) * 100
+		if hp_label:
+				hp_label.text = "HP: %d/%d" % [player.current_hp, player.max_hp]
 
-	# ----------------------- MP -----------------------
-	if mp_bar:
-		mp_bar.value = (player.current_mp / player.max_mp) * 100
-	if mp_label:
-		mp_label.text = "MP: %d/%d" % [player.current_mp, player.max_mp]
+		# ----------------------- MP -----------------------
+		if mp_bar:
+				mp_bar.value = (player.current_mp / player.max_mp) * 100
+		if mp_label:
+				mp_label.text = "MP: %d/%d" % [player.current_mp, player.max_mp]
 
-	# --------------------- Stamina ---------------------
-	if stamina_bar:
-		stamina_bar.value = (player.current_stamina / player.max_stamina) * 100
+		# --------------------- Stamina ---------------------
+		if stamina_bar:
+				stamina_bar.value = (player.current_stamina / player.max_stamina) * 100
 
-		if player.stamina_penalty_active:
-			stamina_bar.modulate = Color(1.0, 0.5, 0.0) # Laranja (penalidade)
-		else:
-			stamina_bar.modulate = Color(1.0, 0.8, 0.0) # Amarelo normal
+				if player.stamina_penalty_active:
+						stamina_bar.modulate = Color(1.0, 0.5, 0.0) # Laranja (penalidade)
+				else:
+						stamina_bar.modulate = Color(1.0, 0.8, 0.0) # Amarelo normal
 
-	if stamina_label:
-		stamina_label.text = "Stamina: %d/%d" % [
-			player.current_stamina,
-			player.max_stamina
-		]
+		if stamina_label:
+				stamina_label.text = "Stamina: %d/%d" % [
+						player.current_stamina,
+						player.max_stamina
+				]
 
-	# ----------------- Cooldowns das magias -----------------
+		# ----------------- Cooldowns das magias -----------------
 
-	# 🔴 Vermelha
-	if magic_red_cooldown:
-		if player.magic_red_timer > 0:
-			magic_red_cooldown.text = "🔴 %.1f" % player.magic_red_timer
-			magic_red_cooldown.modulate = Color(0.5, 0.5, 0.5)
-		else:
-			magic_red_cooldown.text = "🔴 [1]"
-			magic_red_cooldown.modulate = Color(1, 1, 1)
+		# 🔴 Vermelha
+		if magic_red_cooldown:
+				if player.magic_red_timer > 0:
+						magic_red_cooldown.text = "🔴 %.1f" % player.magic_red_timer
+						magic_red_cooldown.modulate = Color(0.5, 0.5, 0.5)
+				else:
+						magic_red_cooldown.text = "🔴 [1]"
+						magic_red_cooldown.modulate = Color(1, 1, 1)
 
-	# 🟢 Verde
-	if magic_green_cooldown:
-		if player.magic_green_timer > 0:
-			magic_green_cooldown.text = "🟢 %.1f" % player.magic_green_timer
-			magic_green_cooldown.modulate = Color(0.5, 0.5, 0.5)
-		else:
-			magic_green_cooldown.text = "🟢 [2]"
-			magic_green_cooldown.modulate = Color(1, 1, 1)
+		# 🟢 Verde
+		if magic_green_cooldown:
+				if player.magic_green_timer > 0:
+						magic_green_cooldown.text = "🟢 %.1f" % player.magic_green_timer
+						magic_green_cooldown.modulate = Color(0.5, 0.5, 0.5)
+				else:
+						magic_green_cooldown.text = "🟢 [2]"
+						magic_green_cooldown.modulate = Color(1, 1, 1)
 
-	# 🔵 Azul
-	if magic_blue_cooldown:
-		if player.magic_blue_timer > 0:
-			magic_blue_cooldown.text = "🔵 %.1f" % player.magic_blue_timer
-			magic_blue_cooldown.modulate = Color(0.5, 0.5, 0.5)
+		# 🔵 Azul
+		if magic_blue_cooldown:
+				if player.magic_blue_timer > 0:
+						magic_blue_cooldown.text = "🔵 %.1f" % player.magic_blue_timer
+						magic_blue_cooldown.modulate = Color(0.5, 0.5, 0.5)
 
-		elif player.magic_blue_active:
-			magic_blue_cooldown.text = "🔵 ATIVO (%.1f)" % player.magic_blue_duration_timer
-			magic_blue_cooldown.modulate = Color(0.5, 0.8, 1)
+				elif player.magic_blue_active:
+						magic_blue_cooldown.text = "🔵 ATIVO (%.1f)" % player.magic_blue_duration_timer
+						magic_blue_cooldown.modulate = Color(0.5, 0.8, 1)
 
-		else:
-			magic_blue_cooldown.text = "🔵 [3]"
-			magic_blue_cooldown.modulate = Color(1, 1, 1)
+				else:
+						magic_blue_cooldown.text = "🔵 [3]"
+						magic_blue_cooldown.modulate = Color(1, 1, 1)

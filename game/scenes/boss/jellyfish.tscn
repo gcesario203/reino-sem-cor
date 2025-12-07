@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=3 uid="uid://buushqn0boqct"]
 
 [ext_resource type="Script" uid="uid://chv2rs3d26ayf" path="res://scripts/boss/jellyfish.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://b0gp22oyf40hl" path="res://assets/sprites/boss/jellyfish/agua_viva.png" id="2_tnqd7"]
+[ext_resource type="Texture2D" uid="uid://o6a7ciu7ogee" path="res://assets/sprites/boss/jellyfish/agua_viva.png" id="2_tnqd7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jpy0s"]
 atlas = ExtResource("2_tnqd7")
@@ -269,7 +269,8 @@ shape = SubResource("2")
 debug_color = Color(0.82522434, 0.29203513, 0.688493, 0.41960785)
 
 [node name="AttackArea" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 visible = false

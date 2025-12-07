@@ -1,4 +1,4 @@
 res://scripts/boss/jellyfish.gd
 res://scripts/player/player.gd
-res://scripts/projectiles/projectile.gd
+res://scripts/items/potion.gd
 res://scripts/levels/turquoise_library.gd
