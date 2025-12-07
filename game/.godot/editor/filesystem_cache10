@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1765140086
+::res://::1765141736
 export_presets.cfg::TextFile::-1::1765140086::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::7090988630187736341::1765123444::1765124548::1::::<><><>0<>0<>6dd355d965f5506e66e697f52eca53c6<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://assets/::1765138018
@@ -71,10 +71,6 @@ projectile.png::CompressedTexture2D::4981437509461995879::1765123438::1765124548
 tileset_biblioteca_turquesa.png::CompressedTexture2D::7335175013516120727::1765123438::1765124550::1::::<><><>0<>0<>096d2689c01919337775b66ef6599878<>res://.godot/imported/tileset_biblioteca_turquesa.png-b0ff2ea35e3ac21b93204cdc86fd5876.ctex::
 ::res://assets/sprites/tilesetresource/::1765139682
 azure_library.tres::TileSet::7598295418410117443::1765139682::0::1::::<><><>0<>0<><>::uid://dcrhi4qdic2q2::::res://assets/sprites/tileset/tileset_biblioteca_turquesa.png
-::res://export/::1765140092
-index.apple-touch-icon.png::CompressedTexture2D::723801155241443803::1765140092::1765140087::1::::<><><>0<>0<>057213c52485204956219ecec7a30a76<>res://.godot/imported/index.apple-touch-icon.png-2786902287ee3c081d87ddba9fd253fe.ctex::
-index.icon.png::CompressedTexture2D::3651341098838973208::1765140092::1765140096::1::::<><><>0<>0<>7c0222b443439d5900e9cb67305ec8ce<>res://.godot/imported/index.icon.png-3b121a4922cb9cfa20e3529a349a6f72.ctex::
-index.png::CompressedTexture2D::4574517629357773469::1765140092::1765140087::1::::<><><>0<>0<>340c86e4c67dc8f91b0222fe0d3bd042<>res://.godot/imported/index.png-de14850a4c2320eaddca8799ea52db2b.ctex::
 ::res://scenes/::1765138018
 ::res://scenes/boss/::1765138992
 jellyfish.tscn::PackedScene::3832591379555925367::1765138992::0::1::::<><><>0<>0<><>::uid://chv2rs3d26ayf::::res://scripts/boss/jellyfish.gd<>uid://o6a7ciu7ogee::::res://assets/sprites/boss/jellyfish/agua_viva.png

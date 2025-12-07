@@ -1,7 +1,0 @@
-res://scenes/player/player.tscn
-res://assets/sprites/tilesetresource/azure_library.tres
-res://scripts/items/potion.gd
-res://scripts/managers/hud.gd
-res://scenes/ui/hud.tscn
-res://scenes/ui/main_menu.tscn
-res://scripts/player/player.gd

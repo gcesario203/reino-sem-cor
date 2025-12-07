@@ -1,0 +1,131 @@
+[gd_scene load_steps=2 format=3 uid="uid://buv6d6xr1lifp"]
+
+[ext_resource type="Script" uid="uid://clvdrf8dn4b4t" path="res://scripts/managers/hud.gd" id="1"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 400.0
+offset_bottom = 200.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HPLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 18
+text = "HP: 100/100"
+
+[node name="HPBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 25)
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="MPLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.4, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "MP: 100/100"
+
+[node name="MPBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 25)
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="StaminaLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+theme_override_font_sizes/font_size = 18
+text = "Stamina: 100/100"
+
+[node name="StaminaBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 25)
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="MagicContainer" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -80.0
+offset_right = 150.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MagicCooldowns" type="HBoxContainer" parent="MagicContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="RedCooldown" type="Label" parent="MagicContainer/MagicCooldowns"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "🔴 [1]"
+
+[node name="GreenCooldown" type="Label" parent="MagicContainer/MagicCooldowns"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "🟢 [2]"
+
+[node name="BlueCooldown" type="Label" parent="MagicContainer/MagicCooldowns"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "🔵 [3]"
+
+[node name="Controls" type="VBoxContainer" parent="."]
+offset_left = 1500.0
+offset_top = 20.0
+offset_right = 1900.0
+offset_bottom = 300.0
+
+[node name="Title" type="Label" parent="Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "CONTROLES:"
+
+[node name="Move" type="Label" parent="Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "WASD - Mover"
+
+[node name="Jump" type="Label" parent="Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Espaço - Pular"
+
+[node name="Sprint" type="Label" parent="Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Shift - Correr"
+
+[node name="Attack" type="Label" parent="Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Mouse Esq/J - Ataque"
+
+[node name="Block" type="Label" parent="Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Mouse Dir/K - Bloquear"
+
+[node name="Magic" type="Label" parent="Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "1/2/3 - Magias"
+
+[node name="Restart" type="Label" parent="Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "R - Reiniciar"
