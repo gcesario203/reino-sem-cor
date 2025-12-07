@@ -25,13 +25,13 @@ const MP_REGEN_RATE = 5.0  # Por segundo, fora de combate
 
 var max_stamina = 100.0
 var current_stamina = 100.0
-const STAMINA_REGEN_IDLE = 30.0  # Parado
-const STAMINA_REGEN_WALK = 15.0   # Andando
+const STAMINA_REGEN_IDLE = 20.0  # Parado
+const STAMINA_REGEN_WALK = 10.0   # Andando
 const STAMINA_REGEN_RUN = 0.0    # Correndo (não regenera)
-const STAMINA_COST_RUN = 3.0    # Por segundo
-const STAMINA_COST_JUMP = 3.0
-const STAMINA_COST_ATTACK = 2.0
-const STAMINA_COST_BLOCK = 2.0   # Por segundo
+const STAMINA_COST_RUN = 5.0    # Por segundo
+const STAMINA_COST_JUMP = 8.0
+const STAMINA_COST_ATTACK = 5.0
+const STAMINA_COST_BLOCK = 5.0   # Por segundo
 
 # ===== SISTEMA DE COMBATE =====
 var attack_damage = 15.0
@@ -44,7 +44,7 @@ var block_damage_reduction = 0.5
 # ===== SISTEMA DE PROJÉTEIS =====
 var projectile_scene = preload("res://scenes/projectiles/projectile.tscn")
 var projectile_speed = 300.0
-var projectile_mana_cost = 10.0
+var projectile_mana_cost = 20.0
 
 # ===== SISTEMA DE MAGIAS =====
 var magic_red_active = false
@@ -85,9 +85,9 @@ var coyote_timer = 0.0
 var was_on_floor = false
 
 # ===== DOUBLE JUMP ===== (CORRIGIDO BUG-024: Sistema de double jump)
-const MAX_JUMPS = 2  # Permite double jump (1 pulo inicial + 1 extra no ar)
+const MAX_JUMPS = 1  # Permite double jump (1 pulo inicial + 1 extra no ar)
 var jumps_remaining = MAX_JUMPS
-const DOUBLE_JUMP_VELOCITY = -650.0  # Segundo pulo um pouco mais fraco
+const EXTRA_JUMP_POWER = -650.0  # Segundo pulo um pouco mais fraco
 
 # ===== REFERÊNCIAS =====
 @onready var sprite = $AnimatedSprite2D
@@ -220,7 +220,7 @@ func handle_input(delta):
 																coyote_timer = 0  # Resetar coyote time após pular
 												else:
 																# Double jump (no ar)
-																jump_power = DOUBLE_JUMP_VELOCITY
+																jump_power = EXTRA_JUMP_POWER
 																jumps_remaining -= 1
 																print("🦘 Double Jump!")
 												
@@ -307,6 +307,8 @@ func shoot_projectile():
 				
 				# Cooldown
 				attack_timer = attack_cooldown
+				
+				current_stamina -= STAMINA_COST_ATTACK
 				
 				# Animação rápida de ataque (sem bloquear movimento)
 				if sprite:

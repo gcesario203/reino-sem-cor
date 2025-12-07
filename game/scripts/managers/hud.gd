@@ -24,7 +24,7 @@ func _ready():
 		if mp_bar:
 				mp_bar.modulate = Color(0.2, 0.5, 1.0) # Azul
 		if stamina_bar:
-				stamina_bar.modulate = Color(1.0, 0.8, 0.0) # Amarelo/Dourado
+				stamina_bar.modulate = Color(0.071, 0.8, 0.0, 1.0) # Verde
 		
 		# CORRIGIDO BUG-012: Usar call_deferred com retry
 		call_deferred("_find_player")
@@ -65,7 +65,7 @@ func update_hud():
 				if player.stamina_penalty_active:
 						stamina_bar.modulate = Color(1.0, 0.5, 0.0) # Laranja (penalidade)
 				else:
-						stamina_bar.modulate = Color(1.0, 0.8, 0.0) # Amarelo normal
+						stamina_bar.modulate = Color(0.071, 0.8, 0.0, 1.0) # Verde
 
 		if stamina_label:
 				stamina_label.text = "Stamina: %d/%d" % [

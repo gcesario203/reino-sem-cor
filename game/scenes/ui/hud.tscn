@@ -113,12 +113,12 @@ text = "Shift - Correr"
 [node name="Attack" type="Label" parent="Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
-text = "Mouse Esq - Ataque"
+text = "Mouse Esq/J - Ataque"
 
 [node name="Block" type="Label" parent="Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
-text = "Mouse Dir - Bloquear"
+text = "Mouse Dir/K - Bloquear"
 
 [node name="Magic" type="Label" parent="Controls"]
 layout_mode = 2

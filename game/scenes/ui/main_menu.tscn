@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://byckxqg7d76v2"]
 
-[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_main_menu"]
+[ext_resource type="Script" uid="uid://dulvcvicxmovj" path="res://scripts/ui/main_menu.gd" id="1_main_menu"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -68,7 +68,7 @@ text = "[center]
 [b]ESPAÇO[/b] - Pular
 [b]SHIFT[/b] - Correr
 
-[b]BOTÃO ESQUERDO / J[/b] - Disparar Projétil (3 MP)
+[b]BOTÃO ESQUERDO / J[/b] - Disparar Projétil (20 MP, 5 Stamina)
 [b]BOTÃO DIREITO / K[/b] - Bloquear
 
 [b]1[/b] - Magia Vermelha (Golpe Rubi - 15 MP)

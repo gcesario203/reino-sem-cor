@@ -2,12 +2,12 @@ extends Area2D
 
 # Tipos de frasco
 enum PotionType {
-				RED_MP,      # Restaura 30 MP
-				GREEN_HP,    # Restaura 40 HP
-				BLUE_STAMINA # Restaura 50 Stamina
+				RED_HP,      # Restaura 30 MP
+				GREEN_STAMINA,    # Restaura 40 HP
+				BLUE_MP # Restaura 50 Stamina
 }
 
-@export var potion_type: PotionType = PotionType.RED_MP
+@export var potion_type: PotionType = PotionType.RED_HP
 @export var respawn_time: float = 30.0
 @export var float_amplitude: float = 10.0
 @export var float_speed: float = 2.0
@@ -60,15 +60,15 @@ func setup_visual_by_type():
 								return
 				
 				match potion_type:
-								PotionType.RED_MP:
+								PotionType.RED_HP:
 												sprite.modulate = Color(1.0, 0.2, 0.2)  # Vermelho
 												if particles and is_instance_valid(particles):
 																particles.modulate = Color(1.0, 0.0, 0.0, 0.8)
-								PotionType.GREEN_HP:
+								PotionType.GREEN_STAMINA:
 												sprite.modulate = Color(0.2, 1.0, 0.2)  # Verde
 												if particles and is_instance_valid(particles):
 																particles.modulate = Color(0.0, 1.0, 0.0, 0.8)
-								PotionType.BLUE_STAMINA:
+								PotionType.BLUE_MP:
 												sprite.modulate = Color(0.2, 0.5, 1.0)  # Azul
 												if particles and is_instance_valid(particles):
 																particles.modulate = Color(0.0, 0.5, 1.0, 0.8)
@@ -95,15 +95,15 @@ func collect(player):
 				
 				# Aplica efeito ao jogador
 				match potion_type:
-								PotionType.RED_MP:
-												player.restore_stat("mp", 30)
-												show_feedback("+30 MP", Color(1.0, 0.2, 0.2))
-								PotionType.GREEN_HP:
+								PotionType.RED_HP:
 												player.restore_stat("hp", 40)
-												show_feedback("+40 HP", Color(0.2, 1.0, 0.2))
-								PotionType.BLUE_STAMINA:
+												show_feedback("+40 HP", Color(1.0, 0.2, 0.2))
+								PotionType.GREEN_STAMINA:
 												player.restore_stat("stamina", 50)
-												show_feedback("+50 Stamina", Color(0.2, 0.5, 1.0))
+												show_feedback("+50 STAMINA", Color(0.2, 1.0, 0.2))
+								PotionType.BLUE_MP:
+												player.restore_stat("mp", 30)
+												show_feedback("+30 Stamina", Color(0.2, 0.5, 1.0))
 				
 				# CORRIGIDO: Esconde visualmente com verificações
 				if sprite and is_instance_valid(sprite):
