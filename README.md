@@ -23,7 +23,7 @@ Este é um projeto interdisciplinar que combina Tecnologia da Informação e Pri
 ```bash
 api_corporate/
 ├── assets/               # Imagens utilizadas para a criação do site
-├── game/          # Arquivos isolados que pertencem ao jogo
+├── game/          # Demo do jogo implementada
 ├── ./definicoes-do-trabalho.pdf          # Documento contendo toda a estrutura de definição da ativiadade à ser desenvolvida
 ├── ./documentacao.pdf      # Documentação elaborada e detalhada contendo os dados do projeto realizado
 ├── ./index.html  # Landing page contendo o conteúdo do site
@@ -32,8 +32,8 @@ api_corporate/
 
 A documentação completa do jogo, incluindo detalhes sobre personagens, inimigos, cenários e mecânicas principais, está disponível na página principal do projeto.
 
-**Gênero:** Sobrevivência / Fantasia Medieval
-**Ferramentas:** GDevelop, Wix e Canva
+**Gênero:** Platform shooter 2D com elementos de sobrevivência
+**Ferramentas:** Godot e Wix
 
 ## Como Jogar
 
