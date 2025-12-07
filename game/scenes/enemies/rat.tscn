@@ -202,8 +202,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="CollisionShape2D_rat"]
 size = Vector2(47, 51)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_detection"]
-radius = 300.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn0ow"]
+size = Vector2(600, 144)
 
 [node name="Rat" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1")
@@ -222,7 +222,8 @@ shape = SubResource("CollisionShape2D_rat")
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_detection")
+position = Vector2(0, -58)
+shape = SubResource("RectangleShape2D_qn0ow")
 
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true

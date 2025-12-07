@@ -413,7 +413,7 @@ func die():
 	died.emit()  # Emite sinal de morte
 	sprite.play("death")
 	set_physics_process(false)
-	await sprite.animation_finished
+	await get_tree().create_timer(1.6).timeout
 	get_tree().reload_current_scene()
 
 func regenerate_resources(delta):

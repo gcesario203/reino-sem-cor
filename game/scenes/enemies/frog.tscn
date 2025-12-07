@@ -259,8 +259,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="CollisionShape2D_frog"]
 size = Vector2(43, 47)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_detection"]
-radius = 400.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kosjv"]
+size = Vector2(800, 305)
 
 [node name="Frog" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1")
@@ -279,7 +279,8 @@ shape = SubResource("CollisionShape2D_frog")
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_detection")
+position = Vector2(0, -131.5)
+shape = SubResource("RectangleShape2D_kosjv")
 
 [node name="JumpCooldownTimer" type="Timer" parent="."]
 wait_time = 3.0

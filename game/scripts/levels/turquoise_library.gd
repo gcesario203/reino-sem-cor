@@ -26,7 +26,7 @@ var checkpoints: Dictionary = {}
 
 @onready var player = $Player
 @onready var boss = $Boss
-@onready var camera = $Camera2D
+@onready var camera = $Player/Camera2D
 @onready var phase_transition = $PhaseTransitionArea
 @onready var enemies_container = $Enemies
 @onready var potions_container = $Potions
