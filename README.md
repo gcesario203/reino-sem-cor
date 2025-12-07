@@ -37,7 +37,9 @@ A documentação completa do jogo, incluindo detalhes sobre personagens, inimigo
 
 ## Como Jogar
 
-Experimente a fase demonstrativa diretamente no navegador através da página principal do projeto.
+Experimente a fase demonstrativa diretamente no navegador através da página principal do projeto, acessivel em:
+[Wix](https://gcesario203.wixsite.com/my-site-4)
+[Github pages](https://gcesario203.github.io/reino-sem-cor/index.html)
 
 ---
 
