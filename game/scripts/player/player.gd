@@ -357,7 +357,7 @@ func take_damage(amount: float, attacker_position: Vector2 = Vector2.ZERO):
 	# KNOCKBACK APRIMORADO
 	if attacker_position != null and attacker_position != Vector2.ZERO:
 		var knockback_direction = (global_position - attacker_position).normalized()
-		var knockback_multiplier = 1.0
+		var knockback_multiplier = 0.5
 
 		# Knockback mais forte se atacante está acima (inimigo grudado)
 		if attacker_position.y < global_position.y - 20:  # Atacante 20 pixels acima

@@ -266,11 +266,13 @@ autoplay = "float"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("2")
+debug_color = Color(0.82522434, 0.29203513, 0.688493, 0.41960785)
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+visible = false
 shape = SubResource("3")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
